@@ -1,0 +1,15 @@
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\bin\Debug\net9.0\TicTacToeCLI.exe
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\bin\Debug\net9.0\TicTacToeCLI.deps.json
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\bin\Debug\net9.0\TicTacToeCLI.runtimeconfig.json
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\bin\Debug\net9.0\TicTacToeCLI.dll
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\bin\Debug\net9.0\TicTacToeCLI.pdb
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.AssemblyInfoInputs.cache
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.AssemblyInfo.cs
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.csproj.CoreCompileInputs.cache
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.dll
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\refint\TicTacToeCLI.dll
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.pdb
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.genruntimeconfig.cache
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\ref\TicTacToeCLI.dll
+C:\Users\leo.logel\Workspace\CCI_courses\MAUI\TicTacToeCLI\obj\Debug\net9.0\TicTacToeCLI.sourcelink.json
