@@ -1,19 +1,22 @@
 ﻿using CSharpFunctionalExtensions;
+using System.Reflection.Metadata.Ecma335;
+using TicTacToeCLI.interfaces;
 
 namespace TicTacToe;
 
-internal class Player
+internal class Player : IPlayer
 {
-    public readonly char icon;
-
+    private char _icon;
     public Player(char icon)
     {
-        this.icon = icon;
+        _icon = icon;
     }
+
+    char IPlayer.icon => _icon;
 
     public Result<PlayerMoves> GetNextMove()
     {
-        Console.WriteLine($"Player {icon} - Enter row (1-3) and column (1-3), separated by a space");
+        Console.WriteLine($"Player {_icon} - Enter row (1-3) and column (1-3), separated by a space");
         string? input = Console.ReadLine();
 
         string[]? splittedInput = input?.Split(' ');

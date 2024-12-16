@@ -2,6 +2,7 @@
 
 
 using CSharpFunctionalExtensions;
+using TicTacToeCLI.interfaces;
 
 namespace TicTacToe;
 
@@ -75,7 +76,7 @@ internal class Board
         return true;
     }
 
-    internal Maybe<string> IsGameOver(Player currentPlayer)
+    internal Maybe<string> IsGameOver(IPlayer currentPlayer)
     {
         if (IsGameBoardWin())
         {

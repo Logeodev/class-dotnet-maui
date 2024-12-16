@@ -1,5 +1,7 @@
 ﻿
 using CSharpFunctionalExtensions;
+using TicTacToeCLI;
+using TicTacToeCLI.interfaces;
 
 namespace TicTacToe;
 
@@ -9,16 +11,16 @@ internal class Game
     public static char PlayerTwoIcon = 'X';
 
     private readonly Board board;
-    private readonly Player player1;
-    private readonly Player player2;
+    private readonly IPlayer player1;
+    private readonly IPlayer player2;
 
-    public Player currentPlayer {  get; private set; }
+    public IPlayer currentPlayer {  get; private set; }
 
     public Game()
     {
         this.board = new Board();
         this.player1 = new Player(PlayerOneIcon);
-        this.player2 = new Player(PlayerTwoIcon);
+        this.player2 = new FakePlayer(PlayerTwoIcon);
     }
 
     public void Init()
@@ -41,10 +43,11 @@ internal class Game
             }
 
             bool movePlayedSuccessfully = this.board.PlayMoveOnBoard(playerMoves.Value, this.currentPlayer.icon);
-            if (movePlayedSuccessfully is false)
+            while (movePlayedSuccessfully is false)
             {
                 Console.WriteLine("Invalid move");
-                continue;
+                playerMoves = this.currentPlayer.GetNextMove();
+                movePlayedSuccessfully = this.board.PlayMoveOnBoard(playerMoves.Value, this.currentPlayer.icon);
             }
             this.board.DisplayGameBoardAndHeader();
 
