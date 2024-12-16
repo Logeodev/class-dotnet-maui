@@ -1,4 +1,4 @@
-﻿namespace TicTacToeCLI;
+﻿namespace TicTacToe;
 
 internal class Cell
 {
