@@ -1,4 +1,8 @@
-﻿namespace TicTacToeCLI
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace TicTacToeCLI
 {
     internal class Game
     {
