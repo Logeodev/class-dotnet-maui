@@ -1,60 +1,55 @@
-﻿
-using CSharpFunctionalExtensions;
-using TicTacToeCLI;
-using TicTacToeCLI.interfaces;
+﻿using CSharpFunctionalExtensions;
+using TicTacToeCLI.Boards;
+using TicTacToeCLI.Display;
+using TicTacToeCLI.Players;
 
-namespace TicTacToe;
+namespace TicTacToeCLI;
 
-internal class Game
+public class Game
 {
-    public static char PlayerOneIcon = 'O';
-    public static char PlayerTwoIcon = 'X';
-
+    private readonly IDisplay display;
     private readonly Board board;
     private readonly IPlayer player1;
     private readonly IPlayer player2;
 
     public IPlayer currentPlayer {  get; private set; }
 
-    public Game()
+    public Game(IDisplay display, IPlayer player1, IPlayer player2)
     {
-        this.board = new Board();
-        this.player1 = new Player(PlayerOneIcon);
-        this.player2 = new FakePlayer(PlayerTwoIcon);
-    }
+        this.board = new Board(display);
 
-    public void Init()
-    {
-        this.board.Init();
+        this.player1 = player1;
+        this.player2 = player2;
+
         this.currentPlayer = this.player1;
+        this.display = display;
     }
 
     public void Play()
     {
-        this.board.DisplayGameBoardAndHeader();
+        this.board.DisplayGameBoard();
 
         while (true)
         {
-            Result<PlayerMoves> playerMoves = this.currentPlayer.GetNextMove();
+            Result<PlayerMove> playerMoves = this.currentPlayer.GetNextMove();
             if (playerMoves.IsFailure)
             {
-                Console.WriteLine(playerMoves.Error);
+                this.display.WriteLine(playerMoves.Error);
                 continue;
             }
 
-            bool movePlayedSuccessfully = this.board.PlayMoveOnBoard(playerMoves.Value, this.currentPlayer.icon);
-            while (movePlayedSuccessfully is false)
+            bool movePlayedSuccessfully = this.board.PlayMoveOnBoard(playerMoves.Value, this.currentPlayer.Icon);
+            if (movePlayedSuccessfully is false)
             {
-                Console.WriteLine("Invalid move");
-                playerMoves = this.currentPlayer.GetNextMove();
-                movePlayedSuccessfully = this.board.PlayMoveOnBoard(playerMoves.Value, this.currentPlayer.icon);
+                this.display.WriteLine("Invalid move");
+                continue;
             }
-            this.board.DisplayGameBoardAndHeader();
+            this.board.DisplayGameBoard();
 
             Maybe<string> gameResult = this.board.IsGameOver(currentPlayer);
             if (gameResult.HasValue)
             {
-                Console.WriteLine(gameResult.Value);
+                this.display.WriteLine(gameResult.Value);
                 break;
             }
 
