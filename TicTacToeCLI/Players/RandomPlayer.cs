@@ -2,7 +2,7 @@
 using TicTacToeCLI.Boards;
 using TicTacToeCLI.Players;
 
-namespace TicTacToe;
+namespace TicTacToeCLI.Players;
 
 public class RandomPlayer : Player
 {
