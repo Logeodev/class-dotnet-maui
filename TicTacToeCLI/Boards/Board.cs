@@ -30,11 +30,11 @@ public class Board
     {
         if (IsGameBoardWin())
         {
-            return Maybe.From($"Player {currentPlayer} has won the game !!!!");
+            return Maybe.From(GameResult.Win(currentPlayer));
         }
         if (IsGameBoardFull())
         {
-            return Maybe.From($"it's a draw!");
+            return Maybe.From(GameResult.Draw());
         }
 
         return Maybe.None;

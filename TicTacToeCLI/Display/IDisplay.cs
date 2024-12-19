@@ -6,6 +6,7 @@ public interface IDisplay
 
     void WriteLine(object obj);
     void WriteLine(string message);
+    string? ReadLine();
     void Clear();
 }
 
@@ -27,6 +28,11 @@ public class ConsoleDisplay : IDisplay
     {
         Console.WriteLine(obj);
     }
+
+    public string? ReadLine()
+    {
+        return Console.ReadLine();
+    }
 }
 
 public class DebugDisplay : IDisplay
@@ -45,5 +51,11 @@ public class DebugDisplay : IDisplay
     public void WriteLine(object obj)
     {
         System.Diagnostics.Debug.WriteLine(obj);
+    }
+
+    public string ReadLine()
+    {
+        Random rnd = new Random();
+        return $"{rnd.Next(1,4)} {rnd.Next(1,4)}";
     }
 }

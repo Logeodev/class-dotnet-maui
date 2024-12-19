@@ -25,7 +25,7 @@ public class Game
         this.display = display;
     }
 
-    public void Play()
+    public string Play()
     {
         this.board.DisplayGameBoard();
 
@@ -50,7 +50,9 @@ public class Game
             if (gameResult.HasValue)
             {
                 this.display.WriteLine(gameResult.Value);
-                break;
+                if (gameResult.Value == GameResult.Draw()) 
+                    return GameResult.Draw(); 
+                else return GameResult.Win(currentPlayer);
             }
 
             this.SwitchPlayer();

@@ -1,21 +1,30 @@
 ﻿using CSharpFunctionalExtensions;
 using TicTacToeCLI.Boards;
+using TicTacToeCLI.Display;
 
 namespace TicTacToeCLI.Players;
 
 public class HumanPlayer : Player
 {
     public override char Icon { get; }
+    private IDisplay display;
+
+    public HumanPlayer(char icon, IDisplay display)
+    {
+        this.Icon = icon;
+        this.display = display;
+    }
 
     public HumanPlayer(char icon)
     {
         this.Icon = icon;
+        this.display = new ConsoleDisplay();
     }
 
     public override Result<PlayerMove> GetNextMove()
     {
-        Console.WriteLine($"Player {Icon} - Enter row (1-3) and column (1-3), separated by a space");
-        string? input = Console.ReadLine();
+        display.WriteLine($"Player {Icon} - Enter row (1-3) and column (1-3), separated by a space");
+        string? input = display.ReadLine();
 
         string[]? splittedInput = input?.Split(' ');
 
