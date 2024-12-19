@@ -15,11 +15,11 @@ namespace TicTacToeCLI.Players
             this.moves = movesSet;
         }
 
-        public override Result<PlayerMove> GetNextMove()
+        public async override Task<Result<PlayerMove>> GetNextMove()
         {
             PlayerMove pm = new PlayerMove(moves[currentMoveIndex].Row, moves[currentMoveIndex].Column);
             currentMoveIndex = (currentMoveIndex + 1) % moves.Count();
-            return Result.Success(pm);
+            return await Task.Run(() => Result.Success(pm));
         }
     }
 }

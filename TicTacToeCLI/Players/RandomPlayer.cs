@@ -1,6 +1,5 @@
 ﻿using CSharpFunctionalExtensions;
 using TicTacToeCLI.Boards;
-using TicTacToeCLI.Players;
 
 namespace TicTacToeCLI.Players;
 
@@ -13,7 +12,10 @@ public class RandomPlayer : Player
         this.Icon = icon;
     }
 
-    public override Result<PlayerMove> GetNextMove()
-        => PlayerMove.Random;
+    public async override Task<Result<PlayerMove>> GetNextMove()
+        => await Task.Run(() => {
+            Thread.Sleep(1000);
+            return PlayerMove.Random;
+        });
 
 }

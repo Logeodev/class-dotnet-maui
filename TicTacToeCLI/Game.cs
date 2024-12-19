@@ -25,13 +25,13 @@ public class Game
         this.display = display;
     }
 
-    public string Play()
+    public async Task<string> Play()
     {
         this.board.DisplayGameBoard();
 
         while (true)
         {
-            Result<PlayerMove> playerMoves = this.currentPlayer.GetNextMove();
+            Result<PlayerMove> playerMoves = await this.currentPlayer.GetNextMove();
             if (playerMoves.IsFailure)
             {
                 this.display.WriteLine(playerMoves.Error);
