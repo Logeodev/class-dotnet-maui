@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectFourTDD", "ConnectFourTDD.csproj", "{19607DE7-28B6-4C2F-A96D-DDF69A62F56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConnectFour", "..\TestConnectFour\TestConnectFour.csproj", "{FFB40EE3-620F-43E5-B52A-30138B70A429}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19607DE7-28B6-4C2F-A96D-DDF69A62F56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19607DE7-28B6-4C2F-A96D-DDF69A62F56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19607DE7-28B6-4C2F-A96D-DDF69A62F56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19607DE7-28B6-4C2F-A96D-DDF69A62F56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB40EE3-620F-43E5-B52A-30138B70A429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB40EE3-620F-43E5-B52A-30138B70A429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB40EE3-620F-43E5-B52A-30138B70A429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB40EE3-620F-43E5-B52A-30138B70A429}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
