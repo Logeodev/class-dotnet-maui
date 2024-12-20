@@ -2,7 +2,7 @@
 
 public class Program
 {
-    public void Main(string[] args)
+    public static void Main(string[] args)
     {
 
     }
