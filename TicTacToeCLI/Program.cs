@@ -6,7 +6,7 @@ namespace TicTacToeCLI;
 public class Program
 {
 
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         IDisplay display = new ConsoleDisplay();
 
@@ -14,7 +14,7 @@ public class Program
 
         Game game = new Game(display, players.Item1, players.Item2);
 
-        game.Play().Wait();
+        await game.Play();
     }
 
     private static (IPlayer, IPlayer) SelectPlayers()

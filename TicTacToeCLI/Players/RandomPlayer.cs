@@ -14,13 +14,13 @@ public class RandomPlayer : Player
 
     public async override Task<Result<PlayerMove>> GetNextMove()
         => await Task.Run(() => {
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(" .");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(" . ");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             Console.Write(". ");
-            Thread.Sleep(1000);
+            Thread.Sleep(500);
             return PlayerMove.Random;
         });
 
