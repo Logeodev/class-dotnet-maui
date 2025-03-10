@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "F3zxhjJQsLw=",
+  "dgSpecHash": "CHTDNUlLUWY=",
   "success": true,
-  "projectFilePath": "C:\\Users\\leo.logel\\Workspace\\CCI_courses\\MAUI\\class-dotnet-maui\\TicTacToeCLI\\TicTacToeCLI.csproj",
+  "projectFilePath": "C:\\Users\\leolo\\Workspace\\CCI_courses\\MAUI\\class-dotnet-maui\\TicTacToeCLI\\TicTacToeCLI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\leo.logel\\.nuget\\packages\\csharpfunctionalextensions\\3.2.0\\csharpfunctionalextensions.3.2.0.nupkg.sha512"
+    "C:\\Users\\leolo\\.nuget\\packages\\csharpfunctionalextensions\\3.2.0\\csharpfunctionalextensions.3.2.0.nupkg.sha512"
   ],
   "logs": []
 }
