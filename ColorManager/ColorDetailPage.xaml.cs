@@ -24,9 +24,4 @@ public partial class ColorDetailPage : ContentPage
             await Navigation.PopAsync();
         }
     }
-
-    async void OnChangeName(object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
-    {
-        _viewModel.Name = e.NewTextValue;
-    }
 }
