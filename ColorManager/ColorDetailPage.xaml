@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ColorManager.ColorDetailPage">
+
+    <StackLayout Padding="10">
+        <Entry 
+            Text="{Binding Name}" 
+            FontSize="Large" 
+            Placeholder="Nom de la couleur"/>
+        <Label Text="{Binding RgbDetails}" FontSize="Medium"/>
+        <Border WidthRequest="100" HeightRequest="100" 
+               BackgroundColor="{Binding Color}"
+               HorizontalOptions="Center"/>
+        <Button Text="Supprimer" 
+                BackgroundColor="Red" 
+                TextColor="White" 
+                Clicked="OnDeleteColorClicked"/>
+    </StackLayout>
+</ContentPage>
