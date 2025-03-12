@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_ConnectFour", "TP_ConnectFour.csproj", "{68D4362F-1692-46E9-8AD6-4DDE9187E4F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_ConnectFour", "..\Test_ConnectFour\Test_ConnectFour.csproj", "{69DFF909-3A88-4452-B814-6CD32712BD9A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{68D4362F-1692-46E9-8AD6-4DDE9187E4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68D4362F-1692-46E9-8AD6-4DDE9187E4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68D4362F-1692-46E9-8AD6-4DDE9187E4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68D4362F-1692-46E9-8AD6-4DDE9187E4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69DFF909-3A88-4452-B814-6CD32712BD9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69DFF909-3A88-4452-B814-6CD32712BD9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69DFF909-3A88-4452-B814-6CD32712BD9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69DFF909-3A88-4452-B814-6CD32712BD9A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CFF6ABA7-4595-4160-A68A-B4421843DFCF}
+	EndGlobalSection
+EndGlobal

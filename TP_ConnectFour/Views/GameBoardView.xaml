@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:TP_ConnectFour.ViewModels"
+             xmlns:views="clr-namespace:TP_ConnectFour.Views"
+             xmlns:converters="clr-namespace:TP_ConnectFour.Converters"
+             x:Class="TP_ConnectFour.Views.GameBoardView"
+             x:DataType="viewmodels:ConnectFourGameViewModel">
+
+    <ContentView.BindingContext>
+        <viewmodels:ConnectFourGameViewModel />
+    </ContentView.BindingContext>
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBooleanConverter x:Key="InvertedBooleanConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid x:Name="MainGrid" RowDefinitions="Auto,*,Auto,Auto">
+        <!-- Game Status -->
+        <Label Grid.Row="0" 
+               Text="{Binding GameStatus}" 
+               HorizontalOptions="Center"
+               FontSize="20"
+               Margin="0,10,0,10"
+               FontAttributes="Bold"/>
+        
+        <!-- Column selection buttons -->
+        <HorizontalStackLayout x:Name="ButtonStackLayout" Grid.Row="1" 
+                               HorizontalOptions="Center" 
+                               Spacing="10"
+                               Margin="0,0,0,10">
+            <HorizontalStackLayout.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="WidthRequest" Value="45" />
+                    <Setter Property="HeightRequest" Value="45" />
+                    <Setter Property="CornerRadius" Value="22" />
+                    <Setter Property="BackgroundColor" Value="#2266AA" />
+                    <Setter Property="TextColor" Value="White" />
+                    <Setter Property="IsEnabled" Value="{Binding IsGameOver, Converter={StaticResource InvertedBooleanConverter}}" />
+                </Style>
+            </HorizontalStackLayout.Resources>
+        </HorizontalStackLayout>
+
+        <!-- Game board grid -->
+        <Grid x:Name="GameBoardGrid" Grid.Row="2"
+              RowSpacing="3"
+              ColumnSpacing="3"
+              Padding="10"
+              BackgroundColor="#0066BB"
+              HorizontalOptions="Center"
+              VerticalOptions="Center">
+        </Grid>
+        
+        <!-- Restart Button -->
+        <Button Grid.Row="3" 
+                Text="Restart Game" 
+                Command="{Binding RestartGameCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20,0,10"
+                BackgroundColor="#2266AA"
+                TextColor="White"
+                WidthRequest="150"
+                HeightRequest="50"
+                CornerRadius="10"/>
+    </Grid>
+</ContentView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TP_ConnectFour.Views.TokenView"
+             xmlns:viewmodels="clr-namespace:TP_ConnectFour.ViewModels"
+             x:DataType="viewmodels:TokenViewModel">
+
+    <Border StrokeShape="Ellipse"
+            Stroke="#1A1A1A"
+            StrokeThickness="1"
+            BackgroundColor="{Binding Color, Converter={StaticResource TokenColorConverter}}"
+            WidthRequest="45"
+            HeightRequest="45"
+            Margin="2">
+        <Border.Shadow>
+            <Shadow Brush="#66000000"
+                    Offset="0,1"
+                    Radius="2" />
+        </Border.Shadow>
+    </Border>
+</ContentView>
