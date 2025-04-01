@@ -1,3 +1,5 @@
 .vs
 */obj/
 */bin/Debug/
+*/.containers/
+/colors_api/colors_api/obj
