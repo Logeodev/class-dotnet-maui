@@ -12,10 +12,10 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["colors_api.csproj", "."]
-RUN dotnet restore "./colors_api.csproj"
+COPY ["colors_api/colors_api.csproj", "colors_api/"]
+RUN dotnet restore "./colors_api/colors_api.csproj"
 COPY . .
-WORKDIR "/src/."
+WORKDIR "/src/colors_api"
 RUN dotnet build "./colors_api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Cette étape permet de publier le projet de service à copier dans la phase finale

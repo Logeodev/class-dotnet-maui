@@ -1,0 +1,42 @@
+services:
+    colors_api:
+        image: ${DOCKER_REGISTRY-}colorsapi
+        build:
+            context: .
+            dockerfile: colors_api/Dockerfile
+        ports:
+            - 5000:8080
+            - 5001:8081
+        environment:
+            # Aspire Dashboard
+            - OTEL_EXPORTER_OTLP_ENDPOINT=http://colorsapi.aspire-dashboard:18889
+            - OTEL_EXPORTER_OTLP_PROTOCOL=grpc-
+ 
+    colorsapi.aspire-dashboard:
+        image: mcr.microsoft.com/dotnet/aspire-dashboard:9.0
+        environment:
+            DOTNET_DASHBOARD_UNSECURED_ALLOW_ANONYMOUS: true
+        ports:
+            - 18888:18888
+            - 4317:18889
+
+    colorsapi.postgres:
+        image: postgres:17.4
+        environment:
+            POSTGRES_DB: colorsapi
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: postgres
+        volumes:
+            - ./.containers/postgres_data:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+ 
+    colorsapi.ollama:
+        image: ollama/ollama:0.6.3
+        ports:
+            - 11434:11434
+        volumes:
+            - ./.containers/ollama_data:/root/.ollama
+        container_name: ollama
+        tty: true
+        restart: unless-stopped

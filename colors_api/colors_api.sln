@@ -1,8 +1,18 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "colors_api", "colors_api.csproj", "{B6A7302B-7E8F-40F9-A20A-44DCC9D63122}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "colors_api", "colors_api\colors_api.csproj", "{6574E951-3BEF-4013-B044-B1112A885A38}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{9C8CB701-102D-CF49-A3E0-89AC09D42C2C}"
+	ProjectSection(SolutionItems) = preProject
+		colors_api\Directory.Build.props = colors_api\Directory.Build.props
+		colors_api\Directory.Packages.props = colors_api\Directory.Packages.props
+		colors_api\editorconfig = colors_api\editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,15 +20,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B6A7302B-7E8F-40F9-A20A-44DCC9D63122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B6A7302B-7E8F-40F9-A20A-44DCC9D63122}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B6A7302B-7E8F-40F9-A20A-44DCC9D63122}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B6A7302B-7E8F-40F9-A20A-44DCC9D63122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6574E951-3BEF-4013-B044-B1112A885A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6574E951-3BEF-4013-B044-B1112A885A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6574E951-3BEF-4013-B044-B1112A885A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6574E951-3BEF-4013-B044-B1112A885A38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E99E7E07-F0D8-4219-9F39-6F2736874D18}
+		SolutionGuid = {E72A3CA6-B14F-41D4-9925-046216E0AD57}
 	EndGlobalSection
 EndGlobal
