@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using colors_front.Pages;
+using colors_front.Services;
+using colors_front.ViewModels;
+using Microsoft.Extensions.Logging;
 
 namespace colors_front
 {
@@ -15,8 +18,11 @@ namespace colors_front
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<IColorApiService, ColorsApiService>();
+            builder.Services.AddSingleton<ColorPalettesViewModel>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

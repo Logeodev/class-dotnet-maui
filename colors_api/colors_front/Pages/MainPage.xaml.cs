@@ -1,25 +1,26 @@
-﻿namespace colors_front.Pages
+﻿using colors_front.ViewModels;
+
+namespace colors_front.Pages
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        private readonly ColorPalettesViewModel _viewModel;
 
-        public MainPage()
+        public MainPage(ColorPalettesViewModel viewModel)
         {
             InitializeComponent();
+            _viewModel = viewModel;
+            BindingContext = _viewModel;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            count++;
+            base.OnAppearing();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            if (_viewModel.ColorPalettes.Count == 0)
+            {
+                await _viewModel.LoadColorPalettesAsync();
+            }
         }
     }
-
 }

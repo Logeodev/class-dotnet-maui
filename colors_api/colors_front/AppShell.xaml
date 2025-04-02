@@ -8,7 +8,7 @@
     Title="Colors APP">
 
     <ShellContent
-        Title="Home"
+        Title="Color Palettes"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
