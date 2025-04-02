@@ -1,4 +1,4 @@
-@colors_api_HostAddress = http://localhost:54024
+@colors_api_HostAddress = http://localhost:5000
 
 GET {{colors_api_HostAddress}}/colors/
 Accept: application/json

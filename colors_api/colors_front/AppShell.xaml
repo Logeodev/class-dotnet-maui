@@ -3,9 +3,9 @@
     x:Class="colors_front.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:colors_front"
+    xmlns:local="clr-namespace:colors_front.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Title="colors_front">
+    Title="Colors APP">
 
     <ShellContent
         Title="Home"

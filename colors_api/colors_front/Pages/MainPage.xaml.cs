@@ -1,4 +1,4 @@
-﻿namespace colors_front
+﻿namespace colors_front.Pages
 {
     public partial class MainPage : ContentPage
     {
