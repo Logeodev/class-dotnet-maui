@@ -16,11 +16,11 @@ namespace colors_api.Controllers
                     new ColorDto(ColorType.Accent, 0, 255, 255)
                 ]),
             new ColorPaletteDto([
-                    new ColorDto(ColorType.Primary, 255,0,0),
-                    new ColorDto(ColorType.Secondary, 0, 255, 0),
-                    new ColorDto(ColorType.Tertiary, 0, 0, 255),
-                    new ColorDto(ColorType.Complementary, 255, 255, 0),
-                    new ColorDto(ColorType.Accent, 0, 255, 255)
+                    new ColorDto(ColorType.Primary, 255,15,0),
+                    new ColorDto(ColorType.Secondary, 185, 56, 75),
+                    new ColorDto(ColorType.Tertiary, 64, 0, 111),
+                    new ColorDto(ColorType.Complementary, 87, 94, 23),
+                    new ColorDto(ColorType.Accent, 48, 21, 113)
                 ]),
         ];
 

@@ -15,38 +15,24 @@ namespace colors_front.ViewModels
 
         public ObservableCollection<ColorPalette> ColorPalettes { get; } = new();
         public ICommand RefreshCommand { get; }
-        public ColorPalettesViewModel()
+        public ColorPalettesViewModel(IColorApiService api)
         {
-            _colorApiService = new ColorsApiService();
+            _colorApiService = api;
+            this.IsBusy = false;
             RefreshCommand = new Command(async () => await LoadColorPalettesAsync());
         }
 
         public async Task LoadColorPalettesAsync()
         {
-            if (IsBusy)
-            {
-                return;
-            } else
-            {
-                IsBusy = true;
-            }
-            try
-            {
-                var palettes = await _colorApiService.GetColorPalettesAsync();
-                ColorPalettes.Clear();
-                foreach (var palette in palettes)
-                {
-                    ColorPalettes.Add(palette);
-                }
-            }
-            catch (Exception)
-            {
+            IsBusy = true;
 
-                throw;
-            } finally
+            var palettes = await _colorApiService.GetColorPalettesAsync();
+            ColorPalettes.Clear();
+            foreach (var palette in palettes)
             {
-                IsBusy = false;
+                ColorPalettes.Add(palette);
             }
+            IsBusy = false;
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using colors_front.Pages;
-using colors_front.Services;
+﻿using colors_front.Services;
 using colors_front.ViewModels;
 using Microsoft.Extensions.Logging;
 

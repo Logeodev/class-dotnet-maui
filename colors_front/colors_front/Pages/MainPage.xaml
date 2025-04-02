@@ -6,10 +6,6 @@
              xmlns:models="clr-namespace:colors_front.Models"
              Title="Palettes">
 
-    <ContentPage.BindingContext>
-        <viewmodels:ColorPalettesViewModel />
-    </ContentPage.BindingContext>
-
     <Grid RowDefinitions="Auto,*" Padding="10">
         <Label Text="Palettes de couleurs" 
                HorizontalOptions="Center"
