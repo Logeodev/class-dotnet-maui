@@ -40,6 +40,7 @@ services:
         container_name: ollama
         tty: true
         restart: unless-stopped
+        # command: ollama run llama3.2:1b # https://github.com/ollama/ollama
         deploy:
             resources:
                 reservations:
