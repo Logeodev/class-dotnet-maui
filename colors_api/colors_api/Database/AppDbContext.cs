@@ -10,12 +10,15 @@ namespace colors_api.Database
         }
 
         public DbSet<Color> Colors { get; set; } = null!;
+        public DbSet<Palette> Palettes { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configuration des entités si nécessaire
             modelBuilder.Entity<Color>()
-                .HasIndex(c => c.Name)
+                .HasIndex(c => c.Id)
+                .IsUnique();
+            modelBuilder.Entity<Palette>()
+                .HasIndex(p => p.Id)
                 .IsUnique();
 
             base.OnModelCreating(modelBuilder);

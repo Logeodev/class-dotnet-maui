@@ -1,6 +1,8 @@
 
+using colors_api.Database;
 using colors_api.Services;
 using ColorsApi.Configurations;
+using Microsoft.EntityFrameworkCore;
 
 namespace colors_api
 {
@@ -18,6 +20,9 @@ namespace colors_api
             // Enregistrement des services
             builder.Services.AddSingleton<IPaletteStorageService, InMemoryPaletteStorageService>();
             builder.Services.AddScoped<PaletteGeneratorService>();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
