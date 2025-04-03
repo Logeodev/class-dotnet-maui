@@ -10,7 +10,6 @@ namespace colors_api.Services
         public DbPaletteStorageService(AppDbContext context)
         {
             _context = context;
-            _context.Database.EnsureCreated();
         }
 
         public int AddPalette(ColorPaletteDto paletteDto)
@@ -25,7 +24,7 @@ namespace colors_api.Services
                     Green = dto.Green,
                     Blue = dto.Blue,
                     CreatedAt = DateTime.UtcNow
-                }).ToArray()
+                }).ToList()
             };
 
             _context.Palettes.Add(palette);

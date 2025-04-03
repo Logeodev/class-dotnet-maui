@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public Color[] Colors { get; set; } = Array.Empty<Color>();
+        public List<Color> Colors { get; set; } = new List<Color>();
     }
 }

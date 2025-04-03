@@ -18,11 +18,11 @@ namespace colors_api
             builder.Services.AddHttpClient();
 
             // Enregistrement des services
-            builder.Services.AddSingleton<IPaletteStorageService, InMemoryPaletteStorageService>();
-            builder.Services.AddScoped<PaletteGeneratorService>();
-
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddScoped<IPaletteStorageService, DbPaletteStorageService>();
+            builder.Services.AddScoped<PaletteGeneratorService>();
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();

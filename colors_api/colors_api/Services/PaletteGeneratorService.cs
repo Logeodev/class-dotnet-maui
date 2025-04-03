@@ -22,10 +22,11 @@ namespace colors_api.Services
             var ollamaRequest = new OllamaRequest
             {
                 Model = "llama3.2:1b",
-                Prompt = "Generate 5 RGB colors to make an UI palette. These colors should be harmonious"
+                Prompt = "Generate 5 RGB colors to make an UI palette. These colors should be harmonious in app UI considerations"
                     + (hint is not null ? " and with " + hint + ". " : ". ") +
-                    "Answer with only JSON format as {\"palette\": " +
-                    "[{\"type\": <int between 0-4>, \"red\": <int 0-255>, \"green\": <int 0-255>, \"blue\": <int 0-255>}]}"
+                    "Answer with only the JSON as {\"palette\": " +
+                    "[{\"type\": <int between 0 to 4>, \"red\": <int 0 to 255>, \"green\": <int 0 to 255>, \"blue\": <int 0 to 255>}]} " +
+                    "Give me this JSON with 5 colors."
             };
 
             try
@@ -50,13 +51,10 @@ namespace colors_api.Services
                     return null;
                 }
 
-                // Extraire et désérialiser la partie JSON de la réponse textuelle
                 try
                 {
-                    // Nettoyer la chaîne de réponse pour s'assurer qu'elle contient uniquement du JSON valide
                     string jsonContent = ollamaResponse.Response;
 
-                    // Rechercher le premier { et le dernier } pour extraire uniquement le JSON
                     int startIndex = jsonContent.IndexOf('{');
                     int endIndex = jsonContent.LastIndexOf('}');
 
