@@ -1,4 +1,5 @@
 ﻿using colors_api.Models;
+using colors_api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace colors_api.Controllers
@@ -7,38 +8,59 @@ namespace colors_api.Controllers
     [Route("[controller]")]
     public class ColorsController : ControllerBase
     {
-        private static readonly ColorPaletteDto[] ColorPalettes = [ 
-            new ColorPaletteDto([
-                    new ColorDto(ColorType.Primary, 255,0,0), 
-                    new ColorDto(ColorType.Secondary, 0, 255, 0), 
-                    new ColorDto(ColorType.Tertiary, 0, 0, 255),
-                    new ColorDto(ColorType.Complementary, 255, 255, 0),
-                    new ColorDto(ColorType.Accent, 0, 255, 255)
-                ]),
-            new ColorPaletteDto([
-                    new ColorDto(ColorType.Primary, 255,15,0),
-                    new ColorDto(ColorType.Secondary, 185, 56, 75),
-                    new ColorDto(ColorType.Tertiary, 64, 0, 111),
-                    new ColorDto(ColorType.Complementary, 87, 94, 23),
-                    new ColorDto(ColorType.Accent, 48, 21, 113)
-                ]),
-        ];
+        private readonly IPaletteStorageService _paletteStorageService;
+        private readonly PaletteGeneratorService _paletteGeneratorService;
+        private readonly ILogger<ColorsController> _logger;
+
+        public ColorsController(
+            IPaletteStorageService paletteStorageService,
+            PaletteGeneratorService paletteGeneratorService,
+            ILogger<ColorsController> logger)
+        {
+            _paletteStorageService = paletteStorageService;
+            _paletteGeneratorService = paletteGeneratorService;
+            _logger = logger;
+        }
 
         [HttpGet(Name = "GetPalettes")]
         public IActionResult Get()
         {
-            return Ok(new { Items = ColorPalettes });
+            return Ok(new { Items = _paletteStorageService.GetAllPalettes() });
         }
 
         [HttpGet("{index}", Name = "GetPaletteAtIndex")]
         public IActionResult Get(int index)
         {
-            if (index < 0 || index >= ColorPalettes.Length)
+            var found = _paletteStorageService.GetPaletteByIndex(index);
+            if (found is null)
             {
-                return NotFound();
+                return NotFound($"Palette avec l'index {index} non trouvée");
             }
-            var found = ColorPalettes.GetValue(index);
-            return Ok(new {Item = found});
+            return Ok(new { Item = found });
+        }
+
+        [HttpGet("generate")]
+        public async Task<IActionResult> GenerateAndAddPalette([FromQuery] string? hint = null)
+        {
+            try
+            {
+                var generatedPalette = await _paletteGeneratorService.GeneratePaletteAsync(hint);
+
+                if (generatedPalette is null)
+                {
+                    return BadRequest("Impossible de générer une nouvelle palette");
+                }
+
+                int newIndex = _paletteStorageService.AddPalette(generatedPalette);
+
+                return CreatedAtRoute("GetPaletteAtIndex", new { index = newIndex },
+                    new { Item = generatedPalette, Index = newIndex });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Erreur lors de la génération et de l'ajout de la palette");
+                return StatusCode(500, "Une erreur s'est produite lors de la génération de la palette");
+            }
         }
     }
 }

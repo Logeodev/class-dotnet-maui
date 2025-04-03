@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Text.Json;
 using colors_api.Models;
+using colors_api.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace colors_api.Controllers
@@ -12,16 +13,35 @@ namespace colors_api.Controllers
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILogger<LlmController> _logger;
+        private readonly PaletteGeneratorService _paletteGeneratorService;
         private readonly IConfiguration _configuration;
 
         // URL du service Ollama dans votre docker-compose
         private const string OllamaServiceUrl = "http://colorsapi.ollama:11434";
 
-        public LlmController(IHttpClientFactory httpClientFactory, ILogger<LlmController> logger, IConfiguration configuration)
+        public LlmController(
+            IHttpClientFactory httpClientFactory,
+            ILogger<LlmController> logger,
+            PaletteGeneratorService paletteGeneratorService,
+            IConfiguration configuration)
         {
             _httpClientFactory = httpClientFactory;
             _logger = logger;
+            _paletteGeneratorService = paletteGeneratorService;
             _configuration = configuration;
+        }
+
+        [HttpGet("generatePalette/{hint}")]
+        public async Task<ActionResult<ColorPaletteDto>> GeneratePalette(string? hint = null)
+        {
+            var result = await _paletteGeneratorService.GeneratePaletteAsync(hint);
+
+            if (result is null)
+            {
+                return BadRequest("Impossible de générer une palette");
+            }
+
+            return result;
         }
 
         [HttpPost("query")]

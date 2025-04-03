@@ -12,4 +12,9 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+    <ShellContent
+        Title="Chat"
+        ContentTemplate="{DataTemplate local:ChatPage}"
+        Route="LLMChat" />
+
 </Shell>

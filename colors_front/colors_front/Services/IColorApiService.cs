@@ -6,5 +6,6 @@ namespace colors_front.Services
     {
         Task<List<ColorPalette>> GetColorPalettesAsync();
         Task<ColorPalette?> GetColorPaletteByIndexAsync(int index);
+        Task AddGeneratedPaletteAsync(string? hint = null);
     }
 }

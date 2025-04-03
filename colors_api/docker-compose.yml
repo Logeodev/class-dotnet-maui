@@ -32,15 +32,19 @@ services:
             - 5432:5432
  
     colorsapi.ollama:
+        # build:
+        #     context: .
+        #     dockerfile: ollama.Dockerfile
         image: ollama/ollama:0.6.3
         ports:
-            - 11434:11434
+            - 11435:11434
+        environment:
+            - OLLAMA_KEEP_ALIVE=-1
         volumes:
             - ./.containers/ollama_data:/root/.ollama
         container_name: ollama
         tty: true
         restart: unless-stopped
-        # command: ollama run llama3.2:1b # https://github.com/ollama/ollama
         deploy:
             resources:
                 reservations:

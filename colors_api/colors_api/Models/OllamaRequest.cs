@@ -35,6 +35,18 @@ namespace colors_api.Models
         public bool Done { get; set; }
     }
 
+    public class OllamaResponse<T>
+    {
+        [JsonPropertyName("model")]
+        public string Model { get; set; } = "";
+        [JsonPropertyName("created_at")]
+        public DateTime CreatedAt { get; set; }
+        [JsonPropertyName("response")]
+        public T Response { get; set; } = default!;
+        [JsonPropertyName("done")]
+        public bool Done { get; set; }
+    }
+
     public class LlmQueryRequest
     {
         public string Prompt { get; set; } = "";

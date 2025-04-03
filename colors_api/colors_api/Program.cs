@@ -1,4 +1,5 @@
 
+using colors_api.Services;
 using ColorsApi.Configurations;
 
 namespace colors_api
@@ -13,6 +14,11 @@ namespace colors_api
             builder.ConfigureTelemetry();
             builder.Services.AddControllers();
             builder.Services.AddHttpClient();
+
+            // Enregistrement des services
+            builder.Services.AddSingleton<IPaletteStorageService, InMemoryPaletteStorageService>();
+            builder.Services.AddScoped<PaletteGeneratorService>();
+
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 

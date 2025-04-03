@@ -15,11 +15,23 @@ namespace colors_front.ViewModels
 
         public ObservableCollection<ColorPalette> ColorPalettes { get; } = new();
         public ICommand RefreshCommand { get; }
+        public ICommand GeneratePaletteCommand { get; }
+
         public ColorPalettesViewModel(IColorApiService api)
         {
             _colorApiService = api;
             this.IsBusy = false;
             RefreshCommand = new Command(async () => await LoadColorPalettesAsync());
+            GeneratePaletteCommand = new Command(async () => await GenerateNewPalette());
+        }
+
+        private async Task GenerateNewPalette()
+        {
+            IsBusy = true;
+
+            await _colorApiService.AddGeneratedPaletteAsync();
+
+            IsBusy = false;
         }
 
         public async Task LoadColorPalettesAsync()

@@ -55,5 +55,17 @@ namespace colors_front.Services
                 return new List<ColorPalette>();
             }
         }
+
+        public async Task AddGeneratedPaletteAsync(string? hint = null)
+        {
+            try
+            {
+                var response = await _httpClient.GetAsync($"{_baseUrl}/colors/generate" + (hint is null ? "" : $"?hint={hint}"));
+                response.EnsureSuccessStatusCode();
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Error creating new palete with LLM : {ex.Message}");
+            }
+        }
     }
 }

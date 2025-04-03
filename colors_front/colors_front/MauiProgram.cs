@@ -20,6 +20,9 @@ namespace colors_front
             builder.Services.AddSingleton<IColorApiService, ColorsApiService>();
             builder.Services.AddSingleton<ColorPalettesViewModel>();
 
+            builder.Services.AddSingleton<LamaApiService>();
+            builder.Services.AddSingleton<PromptViewModel>();
+
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
