@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Net.Http.Json;
+using System.Text.Json;
 using colors_front.Models;
 
 namespace colors_front.Services
@@ -56,16 +57,42 @@ namespace colors_front.Services
             }
         }
 
-        public async Task AddGeneratedPaletteAsync(string? hint = null)
+        public async Task<ColorPalette?> AddGeneratedPaletteAsync(string? hint = null)
         {
             try
             {
-                var response = await _httpClient.GetAsync($"{_baseUrl}/colors/generate" + (hint is null ? "" : $"?hint={hint}"));
+                AddPaletteApi addPaletteApi = new AddPaletteApi
+                {
+                    Hint = hint,
+                    Palette = null
+                };
+                var response = await _httpClient.PostAsJsonAsync($"{_baseUrl}/colors/generate",  addPaletteApi);
                 response.EnsureSuccessStatusCode();
+
+                var content = await response.Content.ReadAsStringAsync();
+                var newPalette = JsonSerializer.Deserialize<ItemApiResponse<ColorPalette>>(content, _jsonSerializerOptions);
+                return newPalette?.Item;
             } catch (Exception ex)
             {
                 Console.WriteLine($"Error creating new palete with LLM : {ex.Message}");
+                return null;
             }
+        }
+
+        public Task<bool> DeletePaletteByIndexAsync(ColorPalette palette)
+        {
+            try
+            {
+                var response = _httpClient.PostAsJsonAsync(
+                    $"{_baseUrl}/colors/deletePalette", 
+                   JsonSerializer.Serialize(palette, _jsonSerializerOptions)
+                );
+            } catch (Exception ex)
+            {
+                Console.WriteLine($"Error deleting palette: {ex.Message}");
+                return Task.Run(() => false);
+            }
+            return Task.Run(() => true);
         }
     }
 }

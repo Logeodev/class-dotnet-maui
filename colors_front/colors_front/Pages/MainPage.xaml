@@ -36,7 +36,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="models:ColorPalette">
                         <Border Margin="10" Padding="15" Stroke="LightGray" StrokeThickness="1">
-                            <StackLayout Spacing="15" Orientation="Vertical" HorizontalOptions="Center">
+                            <StackLayout Spacing="15" Orientation="Horizontal" HorizontalOptions="Center">
                                 <CollectionView ItemsSource="{Binding Palette}" ItemsLayout="HorizontalList">
                                     
                                     <CollectionView.ItemTemplate>
@@ -49,10 +49,17 @@
                                                 <Label Text="{Binding TypeName}" HorizontalOptions="Center" FontAttributes="Bold"/>
                                                 <Label Text="{Binding HexValue}" HorizontalOptions="Center"/>
                                             </StackLayout>
-                                            
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
                                 </CollectionView>
+                                <Button Text="X" 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ColorPalettesViewModel}}, Path=DeletePaletteCommand}"
+                                        CommandParameter="{Binding Source={RelativeSource AncestorType={x:Type models:ColorPalette}}, Path=Index}"
+                                        HorizontalOptions="End"
+                                        HeightRequest="20"
+                                        WidthRequest="20"
+                                        BackgroundColor="IndianRed"
+                                        FontAttributes="Bold"/>
                             </StackLayout>
                         </Border>
                     </DataTemplate>

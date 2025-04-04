@@ -39,12 +39,20 @@ namespace colors_api.Controllers
             return Ok(new { Item = found });
         }
 
-        [HttpGet("generate")]
-        public async Task<IActionResult> GenerateAndAddPalette([FromQuery] string? hint = null)
+        [HttpPost("generate")]
+        public async Task<IActionResult> GenerateAndAddPalette(AddPaletteDto request)
         {
             try
             {
-                var generatedPalette = await _paletteGeneratorService.GeneratePaletteAsync(hint);
+                ColorPaletteDto? generatedPalette = null;
+                if (request.Palette is null)
+                {
+                    generatedPalette = await _paletteGeneratorService.GeneratePaletteAsync(request.Hint);
+                }
+                else if (request.Palette is not null)
+                {
+                    generatedPalette = request.Palette;
+                }
 
                 if (generatedPalette is null)
                 {
@@ -54,13 +62,28 @@ namespace colors_api.Controllers
                 int newIndex = _paletteStorageService.AddPalette(generatedPalette);
 
                 return CreatedAtRoute("GetPaletteAtIndex", new { index = newIndex },
-                    new { Item = generatedPalette, Index = newIndex });
+                    new { Item = generatedPalette });
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Erreur lors de la génération et de l'ajout de la palette");
                 return StatusCode(500, "Une erreur s'est produite lors de la génération de la palette");
             }
+        }
+
+        [HttpPost("deletePalette")]
+        public async Task<IActionResult> DeletePalette(ColorPaletteDto palette)
+        {
+            var palettes = _paletteStorageService.GetAllPalettes().ToList();
+            int foundPaletteId = palettes.FindIndex(
+                p => p.Palette.All(c => palette.Palette.Contains(c))
+            );
+            if (foundPaletteId != -1)
+            {
+                _paletteStorageService.RemovePalette(foundPaletteId);
+                return Ok();
+            }
+            return NotFound("Palette non trouvée pour la suppression");
         }
     }
 }

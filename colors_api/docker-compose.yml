@@ -39,7 +39,7 @@ services:
         ports:
             - 11435:11434
         environment:
-            - OLLAMA_KEEP_ALIVE=-1
+            - OLLAMA_KEEP_ALIVE=10m
         volumes:
             - ./.containers/ollama_data:/root/.ollama
         container_name: ollama

@@ -38,5 +38,10 @@ namespace colors_api.Services
             _palettes.Add(palette);
             return _palettes.Count - 1;
         }
+
+        public void RemovePalette(int index)
+        {
+            _palettes.RemoveAt(index);
+        }
     }
 }

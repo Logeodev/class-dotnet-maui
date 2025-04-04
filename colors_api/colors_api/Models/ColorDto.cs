@@ -32,5 +32,16 @@ namespace colors_api.Models
         {
             
         }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is ColorDto other)
+            {
+                return Red == other.Red &&
+                       Green == other.Green &&
+                       Blue == other.Blue;
+            }
+            return false;
+        }
     }
 }

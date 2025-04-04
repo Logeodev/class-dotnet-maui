@@ -7,5 +7,7 @@ namespace colors_api.Services
         IReadOnlyList<ColorPaletteDto> GetAllPalettes();
         ColorPaletteDto? GetPaletteByIndex(int index);
         int AddPalette(ColorPaletteDto palette);
+
+        void RemovePalette(int index);
     }
 }

@@ -61,5 +61,14 @@ namespace colors_api.Services
                     .ToArray()
             );
         }
+
+        public void RemovePalette(int index)
+        {
+            var dbId = _context.Palettes.ElementAt(index).Id;
+            _context.Palettes.RemoveRange(
+                _context.Palettes
+                    .Where(p => p.Id == dbId)
+            );
+        }
     }
 }
